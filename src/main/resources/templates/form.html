@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaft.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}"></title>
+</head>
+
+<body>
+    <h1 th:text="${titulo}"></h1>
+    <form th:action="@{/form}" th:object="${usuario}" method="post">
+        <div>
+
+            <label for="identificador">Identificador</label>
+            <div>
+                <input type="text" id="identificador" th:field="*{identificador}">
+            </div>
+            <div for="nombre" th:if="${#fields.hasErrors('identificador')}" th:errors="*{identificador}"></div>
+        </div>
+        <!-- -->
+        <div>
+
+            <label for="nombre">Nombre</label>
+            <div>
+                <input type="text" id="nombre" th:field="*{nombre}">
+            </div>
+            <div for="nombre" th:if="${#fields.hasErrors('nombre') }" th:errors="*{nombre}"></div>
+        </div>
+        <!-- -->
+        <div>
+
+            <label for="apellido">Apellido</label>
+            <div>
+                <input type="text" id="apellido" th:field="*{apellido}">
+            </div>
+            <div for="apellido" th:if="${#fields.hasErrors('apellido') }" th:errors="*{apellido}"></div>
+        </div>
+        <!-- -->
+        <div>
+
+            <label for="username">Username</label>
+            <div>
+                <input type="text" id="username" th:field="*{username}">
+            </div>
+            <div th:if="${ #fields.hasErrors('username')}" th:errors="*{username}"></div>
+        </div>
+        <!-- -->
+        <div>
+
+            <label for="password">Password</label>
+            <div>
+                <input type="password" id="password" th:field="*{password}">
+            </div>
+            <div th:if="${ #fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </div>
+        <!-- -->
+        <div>
+
+            <label for="email">email</label>
+            <div>
+                <input type="text" id="email" th:field="*{email}">
+            </div>
+            <div th:if="${ #fields.hasErrors('email')}" th:errors="*{email}"></div>
+        </div>
+        <div>
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+</body>
+
+</html>
