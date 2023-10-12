@@ -17,7 +17,7 @@
             <div>
                 <input type="text" id="identificador" th:field="*{identificador}">
             </div>
-            <div for="nombre" th:if="${#fields.hasErrors('identificador')}" th:errors="*{identificador}"></div>
+            <div th:if="${ #fields.hasErrors('identificador')}" th:errors="*{identificador}"></div>
         </div>
         <!-- -->
         <div>
@@ -26,7 +26,7 @@
             <div>
                 <input type="text" id="nombre" th:field="*{nombre}">
             </div>
-            <div for="nombre" th:if="${#fields.hasErrors('nombre') }" th:errors="*{nombre}"></div>
+            <div th:if="${ #fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
         </div>
         <!-- -->
         <div>
@@ -35,7 +35,7 @@
             <div>
                 <input type="text" id="apellido" th:field="*{apellido}">
             </div>
-            <div for="apellido" th:if="${#fields.hasErrors('apellido') }" th:errors="*{apellido}"></div>
+            <div th:if="${ #fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
         </div>
         <!-- -->
         <div>
