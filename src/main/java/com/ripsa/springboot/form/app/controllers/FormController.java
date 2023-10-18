@@ -87,13 +87,15 @@ public class FormController {
 	@ModelAttribute("listaPaises")
 	public List<Pais> listaPaises(){
 		return Arrays.asList(
-		new Pais(01, "AR", "Argentina"),
-		new Pais(02, "BR", "Brasil"),
-		new Pais(03, "CL", "Chile"),
-		new Pais(04, "PE", "Peru")
+		new Pais(1, "AR", "Argentina"),
+		new Pais(2, "BR", "Brasil"),
+		new Pais(3, "CL", "Chile"),
+		new Pais(4, "PE", "Peru"),
+		new Pais(5, "PL", "Puelto Lico")
 		);
 	}
 
+	
 	@ModelAttribute("paises")
 	public List<String> paises(){
 		return Arrays.asList("Argentina","Brasil","Peru","Chile");
@@ -109,7 +111,7 @@ public class FormController {
 		return paisesMap;
 		
 	}
-
+	
 
 
 

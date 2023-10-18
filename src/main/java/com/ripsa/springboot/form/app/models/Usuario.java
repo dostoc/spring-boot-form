@@ -7,6 +7,7 @@ import java.util.Date;
 import com.ripsa.springboot.form.app.validation.IdentificadorRegex;
 import com.ripsa.springboot.form.app.validation.Requerido;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -45,15 +46,13 @@ public class Usuario {
     @Max(9999)
     private Integer cuenta;
 
-
-
     @NotNull
     @Past
     // @DateTimeFormat(pattern = "yyyy-MM-dd") // anulado para poder validad con
     // initBidner
     private Date fechaNacimiento;
 
-    @NotNull
+    @Valid
     private Pais pais;
 
     public Usuario() {
@@ -130,5 +129,7 @@ public class Usuario {
     public void setPais(Pais pais) {
         this.pais = pais;
     }
+
+    
 
 }
