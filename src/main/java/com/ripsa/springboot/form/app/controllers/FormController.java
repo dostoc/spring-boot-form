@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.ripsa.springboot.form.app.editors.NombreMayusculaEditor;
+import com.ripsa.springboot.form.app.models.Pais;
 import com.ripsa.springboot.form.app.models.Usuario;
 import com.ripsa.springboot.form.app.validation.UsuarioValidador;
 
@@ -81,6 +82,16 @@ public class FormController {
 		model.addAttribute("usuario", usuario);
 		status.setComplete();
 		return "resultado";
+	}
+
+	@ModelAttribute("listaPaises")
+	public List<Pais> listaPaises(){
+		return Arrays.asList(
+		new Pais(01, "AR", "Argentina"),
+		new Pais(02, "BR", "Brasil"),
+		new Pais(03, "CL", "Chile"),
+		new Pais(04, "PE", "Peru")
+		);
 	}
 
 	@ModelAttribute("paises")

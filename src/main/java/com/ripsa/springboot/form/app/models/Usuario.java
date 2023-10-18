@@ -53,7 +53,7 @@ public class Usuario {
     // initBidner
     private Date fechaNacimiento;
 
-    @NotEmpty
+    @NotNull
     private Pais pais;
 
     public Usuario() {
