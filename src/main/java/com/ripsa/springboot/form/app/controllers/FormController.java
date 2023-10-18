@@ -5,7 +5,9 @@ package com.ripsa.springboot.form.app.controllers;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,6 +32,8 @@ import jakarta.validation.Valid;
 @Controller
 @SessionAttributes("usuario") // ** se utiliza para al procesar el objeto y pasar a vista resultado este no se pase null
 public class FormController {
+
+	private static final Map<String, String> HashMap = null;
 
 	@Autowired // **
 	private UsuarioValidador validador; // **
@@ -82,6 +86,17 @@ public class FormController {
 	@ModelAttribute("paises")
 	public List<String> paises(){
 		return Arrays.asList("Argentina","Brasil","Peru","Chile");
+	}
+
+	@ModelAttribute("paisesMap")
+	public Map<String, String> paisesMap(){
+		Map<String, String> paisesMap = new HashMap<String, String>();
+		paisesMap.put("AR", "Argentina");
+		paisesMap.put("BR", "Brasil");
+		paisesMap.put("PE", "Peru");
+		paisesMap.put("CL", "Chile");
+		return paisesMap;
+		
 	}
 
 
