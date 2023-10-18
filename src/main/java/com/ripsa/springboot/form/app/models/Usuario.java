@@ -1,7 +1,5 @@
 package com.ripsa.springboot.form.app.models;
 
-
-
 import java.util.Date;
 
 //import org.springframework.format.annotation.DateTimeFormat;
@@ -20,7 +18,6 @@ import jakarta.validation.constraints.Size;
 
 public class Usuario {
 
-
     @NotBlank(message = "El USER NAME no puede estar vacio")
     @Size(min = 3, max = 8)
     private String username;
@@ -32,15 +29,15 @@ public class Usuario {
     @Email(message = "Correo con formato incorrecto")
     private String email;
 
-    //VER VALIDACION UsuarioValidador
+    // VER VALIDACION UsuarioValidador
     @Requerido
     private String nombre;
 
-    //@NotEmpty(message = "El apellido no puede estar vacio")
+    // @NotEmpty(message = "El apellido no puede estar vacio")
     @Requerido
     private String apellido;
 
-    @IdentificadorRegex //validacion personalizada
+    @IdentificadorRegex // validacion personalizada
     private String identificador;
 
     @NotNull
@@ -48,22 +45,23 @@ public class Usuario {
     @Max(9999)
     private Integer cuenta;
 
+
+
     @NotNull
     @Past
-    //@DateTimeFormat(pattern = "yyyy-MM-dd") // anulado para poder validad con initBidner
+    // @DateTimeFormat(pattern = "yyyy-MM-dd") // anulado para poder validad con
+    // initBidner
     private Date fechaNacimiento;
 
     @NotEmpty
-    private String pais;
+    private Pais pais;
 
     public Usuario() {
     }
 
-
     public String getUsername() {
         return username;
     }
-
 
     public void setUsername(String username) {
         this.username = username;
@@ -73,85 +71,64 @@ public class Usuario {
         return password;
     }
 
-
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     public String getEmail() {
         return email;
     }
 
-
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     public String getNombre() {
         return nombre;
     }
 
-
-
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
 
     public String getApellido() {
         return apellido;
     }
 
-
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
 
     public String getIdentificador() {
         return identificador;
     }
 
-
     public void setIdentificador(String identificador) {
         this.identificador = identificador;
     }
-
 
     public Integer getCuenta() {
         return cuenta;
     }
 
-
     public void setCuenta(Integer cuenta) {
         this.cuenta = cuenta;
     }
-
 
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-
-    public String getPais() {
+    public Pais getPais() {
         return pais;
     }
 
-
-    public void setPais(String pais) {
+    public void setPais(Pais pais) {
         this.pais = pais;
     }
-
-
-    
-
 
 }
