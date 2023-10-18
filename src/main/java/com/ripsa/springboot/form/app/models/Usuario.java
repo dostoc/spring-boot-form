@@ -1,6 +1,10 @@
 package com.ripsa.springboot.form.app.models;
 
+
+
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.ripsa.springboot.form.app.validation.IdentificadorRegex;
 import com.ripsa.springboot.form.app.validation.Requerido;
@@ -46,6 +50,7 @@ public class Usuario {
 
     @NotNull
     @Past
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaNacimiento;
 
     @NotEmpty

@@ -69,7 +69,7 @@
 
             <label for="cuenta">Cuenta</label>
             <div>
-                <input type="text" id="cuenta" th:field="*{cuenta}">
+                <input type="number" id="cuenta" th:field="*{cuenta}">
             </div>
             <div th:if="${ #fields.hasErrors('cuenta')}" th:errors="*{cuenta}"></div>
         </div>
@@ -78,7 +78,7 @@
 
             <label for="fechaNacimiento">Fecha de Nacimiento</label>
             <div>
-                <input type="text" id="fechaNacimiento" th:field="*{fechaNacimiento}">
+                <input type="text" id="fechaNacimiento" th:field="*{fechaNacimiento}" placeholder="yyyy-MM-dd">
             </div>
             <div th:if="${ #fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
         </div>
