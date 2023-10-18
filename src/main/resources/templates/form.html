@@ -11,6 +11,19 @@
 <body>
     <h1 th:text="${titulo}"></h1>
     <form th:action="@{/form}" th:object="${usuario}" method="post">
+         <!-- Pais -->
+         <div>
+
+            <label for="pais">País</label>
+            <div>
+                <select id="pais" th:field="*{pais}">
+                    <option value="">-- Seleccionar --</option>
+                    <option th:each="pais: ${paises}" th:text="${pais}" th:value="${pais}"></option>
+                </select>
+            </div>
+            <div th:if="${ #fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+        </div>
+        <!-- Identificador -->
         <div>
 
             <label for="identificador">Identificador</label>
@@ -82,15 +95,7 @@
             </div>
             <div th:if="${ #fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
         </div>
-        <!-- Pais -->
-        <div>
-
-            <label for="pais">País</label>
-            <div>
-                <input type="text" id="pais" th:field="*{pais}">
-            </div>
-            <div th:if="${ #fields.hasErrors('pais')}" th:errors="*{pais}"></div>
-        </div>
+       
         <div>
             <input type="submit" value="Enviar">
         </div>
