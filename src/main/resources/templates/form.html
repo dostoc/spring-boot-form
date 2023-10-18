@@ -14,14 +14,14 @@
          <!-- Pais -->
          <div>
 
-            <label for="pais.id">País</label>
+            <label for="pais.codigo">País</label>
             <div>
-                <select id="pais" th:field="*{pais.id}">
+                <select id="pais" th:field="*{pais.codigo}">
                     <option value="">-- Seleccionar --</option>
-                    <option th:each="pais: ${listaPaises}" th:text="${pais.nombre}" th:value="${pais.id}"></option>
+                    <option th:each="pais: ${listaPaises}" th:text="${pais.nombre}" th:value="${pais.codigo}"></option>
                 </select>
             </div>
-            <div th:if="${ #fields.hasErrors('pais.id')}" th:errors="*{pais.id}"></div>
+            <div th:if="${ #fields.hasErrors('pais.codigo')}" th:errors="*{pais.codigo}"></div>
         </div>
         <!-- Identificador -->
         <div>
