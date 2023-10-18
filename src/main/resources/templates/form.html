@@ -64,6 +64,33 @@
             </div>
             <div th:if="${ #fields.hasErrors('email')}" th:errors="*{email}"></div>
         </div>
+        <!-- Cuenta -->
+        <div>
+
+            <label for="cuenta">Cuenta</label>
+            <div>
+                <input type="text" id="cuenta" th:field="*{cuenta}">
+            </div>
+            <div th:if="${ #fields.hasErrors('cuenta')}" th:errors="*{cuenta}"></div>
+        </div>
+        <!-- f Nacimiento -->
+        <div>
+
+            <label for="fechaNacimiento">Fecha de Nacimiento</label>
+            <div>
+                <input type="text" id="fechaNacimiento" th:field="*{fechaNacimiento}">
+            </div>
+            <div th:if="${ #fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
+        </div>
+        <!-- Pais -->
+        <div>
+
+            <label for="pais">País</label>
+            <div>
+                <input type="text" id="pais" th:field="*{pais}">
+            </div>
+            <div th:if="${ #fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+        </div>
         <div>
             <input type="submit" value="Enviar">
         </div>

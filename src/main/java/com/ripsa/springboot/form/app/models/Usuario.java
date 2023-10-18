@@ -1,11 +1,17 @@
 package com.ripsa.springboot.form.app.models;
 
+import java.util.Date;
+
 import com.ripsa.springboot.form.app.validation.IdentificadorRegex;
+import com.ripsa.springboot.form.app.validation.Requerido;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-//import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 public class Usuario {
@@ -15,7 +21,7 @@ public class Usuario {
     @Size(min = 3, max = 8)
     private String username;
 
-    @IdentificadorRegex
+    @NotEmpty
     private String password;
 
     @NotEmpty(message = "El email no puede estar vacio")
@@ -23,14 +29,27 @@ public class Usuario {
     private String email;
 
     //VER VALIDACION UsuarioValidador
+    @Requerido
     private String nombre;
 
-    @NotEmpty(message = "El apellido no puede estar vacio")
+    //@NotEmpty(message = "El apellido no puede estar vacio")
+    @Requerido
     private String apellido;
 
-    //VER VALIDACION UsuarioValidador
+    @IdentificadorRegex //validacion personalizada
     private String identificador;
 
+    @NotNull
+    @Min(1000)
+    @Max(9999)
+    private Integer cuenta;
+
+    @NotNull
+    @Past
+    private Date fechaNacimiento;
+
+    @NotEmpty
+    private String pais;
 
     public Usuario() {
     }
@@ -70,6 +89,8 @@ public class Usuario {
     }
 
 
+
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -93,6 +114,39 @@ public class Usuario {
     public void setIdentificador(String identificador) {
         this.identificador = identificador;
     }
+
+
+    public Integer getCuenta() {
+        return cuenta;
+    }
+
+
+    public void setCuenta(Integer cuenta) {
+        this.cuenta = cuenta;
+    }
+
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+
+    public String getPais() {
+        return pais;
+    }
+
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+
+    
 
 
 }
