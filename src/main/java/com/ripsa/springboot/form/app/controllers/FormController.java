@@ -2,8 +2,12 @@ package com.ripsa.springboot.form.app.controllers;
 
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.ripsa.springboot.form.app.editors.NombreMayusculaEditor;
 import com.ripsa.springboot.form.app.models.Usuario;
 import com.ripsa.springboot.form.app.validation.UsuarioValidador;
 
@@ -32,6 +37,11 @@ public class FormController {
 	@InitBinder 
 	public void InitBinder(WebDataBinder binder){
 		binder.addValidators(validador);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		dateFormat.setLenient(false); // false Extricto true Tolerante 
+		binder.registerCustomEditor(Date.class,"fechaNacimiento", new CustomDateEditor(dateFormat, true)); // es como un filtro - vamos a convertir un strin a un tipo date
+	
+		binder.registerCustomEditor(String.class,"apellido",new NombreMayusculaEditor());
 	}
 
 	@Value("${texto.formcontroller.form.titulo}")
