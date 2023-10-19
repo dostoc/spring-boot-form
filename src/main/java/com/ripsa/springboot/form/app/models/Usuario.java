@@ -52,7 +52,7 @@ public class Usuario {
     // initBidner
     private Date fechaNacimiento;
 
-    @Valid
+    @NotNull
     private Pais pais;
 
     public Usuario() {

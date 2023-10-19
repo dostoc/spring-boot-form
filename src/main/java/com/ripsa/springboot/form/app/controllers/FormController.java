@@ -24,8 +24,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.ripsa.springboot.form.app.editors.NombreMayusculaEditor;
+import com.ripsa.springboot.form.app.editors.PaisPropertyEditor;
 import com.ripsa.springboot.form.app.models.Pais;
 import com.ripsa.springboot.form.app.models.Usuario;
+import com.ripsa.springboot.form.app.services.PaisService;
 import com.ripsa.springboot.form.app.validation.UsuarioValidador;
 
 import jakarta.validation.Valid;
@@ -35,6 +37,12 @@ import jakarta.validation.Valid;
 public class FormController {
 
 	private static final Map<String, String> HashMap = null;
+
+	@Autowired
+	private PaisService paisService;
+
+	@Autowired
+	private PaisPropertyEditor paisEditor;
 
 	@Autowired // **
 	private UsuarioValidador validador; // **
@@ -50,6 +58,8 @@ public class FormController {
 		binder.registerCustomEditor(Date.class,"fechaNacimiento", new CustomDateEditor(dateFormat, true)); // es como un filtro - vamos a convertir un strin a un tipo date
 	
 		binder.registerCustomEditor(String.class,"apellido",new NombreMayusculaEditor());
+	
+		binder.registerCustomEditor(Pais.class, "pais", paisEditor);
 	}
 
 	@Value("${texto.formcontroller.form.titulo}")
@@ -86,13 +96,7 @@ public class FormController {
 
 	@ModelAttribute("listaPaises")
 	public List<Pais> listaPaises(){
-		return Arrays.asList(
-		new Pais(1, "AR", "Argentina"),
-		new Pais(2, "BR", "Brasil"),
-		new Pais(3, "CL", "Chile"),
-		new Pais(4, "PE", "Peru"),
-		new Pais(5, "PL", "Puelto Lico")
-		);
+		return paisService.listar();
 	}
 
 	
