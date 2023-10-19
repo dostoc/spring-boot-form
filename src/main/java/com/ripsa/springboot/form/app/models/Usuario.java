@@ -1,6 +1,7 @@
 package com.ripsa.springboot.form.app.models;
 
 import java.util.Date;
+import java.util.List;
 
 //import org.springframework.format.annotation.DateTimeFormat;
 
@@ -54,6 +55,9 @@ public class Usuario {
 
     @NotNull
     private Pais pais;
+
+    @NotEmpty
+    private List<Role> roles;
 
     public Usuario() {
     }
@@ -130,6 +134,15 @@ public class Usuario {
         this.pais = pais;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    
     
 
 }

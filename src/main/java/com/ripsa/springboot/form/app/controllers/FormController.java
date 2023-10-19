@@ -3,6 +3,7 @@ package com.ripsa.springboot.form.app.controllers;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -26,8 +27,10 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.ripsa.springboot.form.app.editors.NombreMayusculaEditor;
 import com.ripsa.springboot.form.app.editors.PaisPropertyEditor;
 import com.ripsa.springboot.form.app.models.Pais;
+import com.ripsa.springboot.form.app.models.Role;
 import com.ripsa.springboot.form.app.models.Usuario;
 import com.ripsa.springboot.form.app.services.PaisService;
+import com.ripsa.springboot.form.app.services.RoleService;
 import com.ripsa.springboot.form.app.validation.UsuarioValidador;
 
 import jakarta.validation.Valid;
@@ -46,6 +49,9 @@ public class FormController {
 
 	@Autowired // **
 	private UsuarioValidador validador; // **
+
+	@Autowired
+	private RoleService roleService;
 
 	// ** Lo que hace esto es implementar de forma directa en el batifondo de Spring los validadores.
 	// ** ver que se usa addValidator para que "sume las nuevas reglas de validacion puestas en la clase UsuarioValidator"
@@ -115,8 +121,30 @@ public class FormController {
 		return paisesMap;
 		
 	}
-	
 
+	@ModelAttribute("listaRoles")
+	public List<Role> listaRoles(){
+		return this.roleService.listar();
+	}
+
+
+	@ModelAttribute("listaRolesString")
+	public List<String>listaRolesString(){
+		List<String> listaRoles = new ArrayList<>();
+		listaRoles.add("ROLE_ADMIN");
+		listaRoles.add("ROLE_USER");
+		listaRoles.add("ROLE_MODERATOR");
+		return listaRoles;
+	}
+	
+	@ModelAttribute("listaRolesMap")
+	public Map<String, String> usuariosMap(){
+		Map<String, String> roles = new HashMap<String, String>();
+		roles.put("ROLE_ADMIN", "Administrador");
+		roles.put("ROLE_USER", "Usuario");
+		roles.put("ROLE_MODERATOR", "Moderador");
+		return roles;
+	}
 
 
 }
