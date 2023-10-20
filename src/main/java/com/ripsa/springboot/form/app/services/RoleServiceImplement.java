@@ -10,6 +10,7 @@ import com.ripsa.springboot.form.app.models.Role;
 @Service
 public class RoleServiceImplement implements RoleService   {
 
+    
     private List<Role> roles;
     
     public RoleServiceImplement(){
@@ -34,7 +35,6 @@ public class RoleServiceImplement implements RoleService   {
             }
         }
         return resultado;
-
     }
     
 }

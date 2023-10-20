@@ -53,8 +53,10 @@ public class Usuario {
     // initBidner
     private Date fechaNacimiento;
 
+    
     @NotNull
     private Pais pais;
+
 
     @NotEmpty
     private List<Role> roles;
@@ -141,6 +143,9 @@ public class Usuario {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+
+
+    
 
     
     

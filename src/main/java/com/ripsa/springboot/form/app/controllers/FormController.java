@@ -26,6 +26,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.ripsa.springboot.form.app.editors.NombreMayusculaEditor;
 import com.ripsa.springboot.form.app.editors.PaisPropertyEditor;
+import com.ripsa.springboot.form.app.editors.RolesEditor;
 import com.ripsa.springboot.form.app.models.Pais;
 import com.ripsa.springboot.form.app.models.Role;
 import com.ripsa.springboot.form.app.models.Usuario;
@@ -53,6 +54,9 @@ public class FormController {
 	@Autowired
 	private RoleService roleService;
 
+	@Autowired
+	private RolesEditor roleEditor;
+
 	// ** Lo que hace esto es implementar de forma directa en el batifondo de Spring los validadores.
 	// ** ver que se usa addValidator para que "sume las nuevas reglas de validacion puestas en la clase UsuarioValidator"
 	// ** por eso se comenta la linea validator.validate(..) ya que esta implementado a travez del bind 
@@ -66,6 +70,9 @@ public class FormController {
 		binder.registerCustomEditor(String.class,"apellido",new NombreMayusculaEditor());
 	
 		binder.registerCustomEditor(Pais.class, "pais", paisEditor);
+
+		binder.registerCustomEditor(Role.class, "roles", roleEditor);
+
 	}
 
 	@Value("${texto.formcontroller.form.titulo}")
@@ -105,7 +112,6 @@ public class FormController {
 		return paisService.listar();
 	}
 
-	
 	@ModelAttribute("paises")
 	public List<String> paises(){
 		return Arrays.asList("Argentina","Brasil","Peru","Chile");
