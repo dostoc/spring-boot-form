@@ -10,7 +10,8 @@
     <h1 th:text="${titulo}"></h1>
     <ul>
         <li th:text="${usuario.pais.codigo}"></li>
-        <li th:text="${usuario.pais.id}"></li>
+        <li th:text="'Habilitado: '+ ${usuario.habilitar}"></li>
+        <li th:text="${usuario.pais.codigo} + ' => ' + ${usuario.pais.nombre}"></li>
         <li th:text="${usuario.pais.nombre}"></li>
         <li th:text="${usuario.identificador}"></li>
         <li th:text="${usuario.nombre}"></li>
@@ -19,12 +20,12 @@
         <li th:text="${usuario.password}"></li>
         <li th:text="${usuario.email}"></li>
         <li th:text="${usuario.cuenta}"></li>
-        <li th:text="${usuario.fechaNacimiento}"></li>
+        <li th:text="${#calendars.format(usuario.fechaNacimiento, 'dd-MM-yy')}"></li>
     </ul>
 
     <div>Roles</div>
     <ul>
-        <li th:each="role : ${usuario.roles}" th:text="${role.id} + ' : ' + ${role.nombre} + ${role.role} "></li>
+        <li th:each="role : ${usuario.roles}" th:text="${role.id} + ' : ' + ${role.nombre} + ' : '+ ${role.role} "></li>
     </ul>
     
 </body>

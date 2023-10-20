@@ -87,6 +87,8 @@ public class FormController {
 		usuario.setNombre("Jhon");
 		usuario.setApellido("Doe");
 		usuario.setIdentificador("28.777.225-D");
+		usuario.setHabilitar(true);
+		
 		model.addAttribute("titulo", tituloform);
 		model.addAttribute("usuario",usuario);
 		return "form";

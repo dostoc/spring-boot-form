@@ -11,8 +11,8 @@
 <body>
     <h1 th:text="${titulo}"></h1>
     <form th:action="@{/form}" th:object="${usuario}" method="post">
-         <!-- Pais -->
-         <div>
+        <!-- Pais -->
+        <div>
 
             <label for="pais">País</label>
             <div>
@@ -23,13 +23,20 @@
             </div>
             <div th:if="${ #fields.hasErrors('pais')}" th:errors="*{pais}"></div>
         </div>
-       
-        <!-- Identificador -->
+        <!-- Habilitar -->
+        <div>
+
+            <label for="habilitar">Habilitar</label>
+            <div>
+                <input type="checkbox" id="habilitar" th:field="*{habilitar}">
+            </div>
+        </div>
+        <!-- Rol -->
         <div>
             <label>Roles</label>
-            <div th:each = "role : ${listaRoles}">
+            <div th:each="role : ${listaRoles}">
                 <input type="checkbox" th:field="*{roles}" th:value="${role.id}">
-                <label for="${#ids.prev('roles')}" th:text ="${role.nombre}"></label>
+                <label for="${#ids.prev('roles')}" th:text="${role.nombre}"></label>
             </div>
             <div th:if="${ #fields.hasErrors('roles')}" th:errors="*{roles}"></div>
         </div>
@@ -105,7 +112,7 @@
             </div>
             <div th:if="${ #fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
         </div>
-       
+
         <div>
             <input type="submit" value="Enviar">
         </div>

@@ -53,13 +53,15 @@ public class Usuario {
     // initBidner
     private Date fechaNacimiento;
 
-    
     @NotNull
     private Pais pais;
 
-
     @NotEmpty
     private List<Role> roles;
+
+    private Boolean habilitar;
+
+
 
     public Usuario() {
     }
@@ -145,9 +147,12 @@ public class Usuario {
     }
 
 
-    
+    public Boolean getHabilitar() {
+        return habilitar;
+    }
 
-    
-    
+    public void setHabilitar(Boolean habilitar) {
+        this.habilitar = habilitar;
+    }
 
 }
